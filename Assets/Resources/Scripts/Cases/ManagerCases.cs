@@ -17,7 +17,7 @@ namespace Resources.Scripts.Cases
         private List<ICase> _listElements;
 
 
-        private void Awake()
+        private void Start()
         {
             _listElements = CaseData.GetData();
             foreach (var _case in _listElements)
@@ -25,13 +25,15 @@ namespace Resources.Scripts.Cases
                 GameObject element = listViewCases.Add(casePrefab);
                 ListElement elementMeta = element.GetComponent<ListElement>();
                 elementMeta.SetTitle(_case.GetName());
-                elementMeta.SetImage(_case.GetImage());
-                elementMeta.SetList(_case.GetItems());
-                elementMeta.SetPrice(_case.GetPrice());
+                elementMeta.SetMainImage(_case.GetMainImage());
+                elementMeta.SetBackgroundImage(_case.GetBackgroundImage());
+                elementMeta.SetPrice(_case.GetTypePrice(), _case.GetPrice());
+                elementMeta.SetPriceImage(_case.GetTypePriceImage());
                 Button actionButton = elementMeta.GetActionButton();
                 actionButton.onClick.AddListener(() =>
                 {
-                    managerOpeningCases.ClickOnCase(_case.GetName(), _case.GetPrice(), _case.GetItems());
+                    Debug.Log("click on button");
+                    managerOpeningCases.ClickOnCase(_case.GetName(), _case.GetPrice(), _case.GetTypePrice(),_case.GetItems());
                     managerScreen.OpenScreenOpeningCases();
                 });
             }

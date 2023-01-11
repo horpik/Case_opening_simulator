@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -18,9 +19,19 @@ namespace Resources.Scripts
         [SerializeField] private float startPositionX;
 
         private int _countElementInLineNow = 1;
+        private float defaultSizeContent;
 
+        private void Start()
+        {
+            defaultSizeContent = m_ContentRectTransform.rect.height;
+        }
 
         // TODO оптимизировать код
+        public void SetDefaultSizeContent()
+        {
+            m_ContentRectTransform.sizeDelta = new Vector2(0, defaultSizeContent);
+        }
+
         public void DestroyObjects()
         {
             foreach (var _object in m_elements)

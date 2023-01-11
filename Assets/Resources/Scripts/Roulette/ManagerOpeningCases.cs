@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Resources.Scripts.Enums;
 using Resources.Scripts.Items;
 using TMPro;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace Resources.Scripts.Roulette
         [SerializeField] private Button startScrollButton;
         [SerializeField] private float scrollSpeed;
         [SerializeField] private float startPositionPanelLeft;
+        [SerializeField] private float spacingBetweenElements;
 
         private Image startScrollButtonImage;
         private RectTransform m_RectTransformPanel;
@@ -27,9 +29,9 @@ namespace Resources.Scripts.Roulette
         private float speed;
         private bool canScroll;
         private float widthPrefab;
-        private float priceCase;
+        private int priceCase;
 
-        private void Awake()
+        private void Start()
         {
             startScrollButtonImage = startScrollButton.GetComponent<Image>();
             widthPrefab = itemPrefab.GetComponent<ListElement>().Width();
@@ -53,7 +55,9 @@ namespace Resources.Scripts.Roulette
         {
             var finishPositionPanelLeft = m_RectTransformPanel.offsetMin.x;
             var rangeScrollLine = (finishPositionPanelLeft - startPositionPanelLeft) * (-1);
-            var result = (int)((rangeScrollLine + 3 * widthPrefab) / widthPrefab);
+            var result = (int)((rangeScrollLine + 3 * widthPrefab + 2 * spacingBetweenElements +
+                                spacingBetweenElements / 2) /
+                               (widthPrefab + spacingBetweenElements));
             return result;
         }
 
@@ -62,8 +66,15 @@ namespace Resources.Scripts.Roulette
             winnerPanel.SetActive(true);
             var winElement = winItem.GetComponent<ListElement>();
             winnerItemPrefab.SetTitle(winElement.GetName());
-            winnerItemPrefab.SetImage(winElement.GetImage().sprite);
-            var item = new Item(winElement.GetName(), winElement.GetImage().sprite, winElement.GetPrice());
+            winnerItemPrefab.SetMainImage(winElement.GetMainImage().sprite);
+            winnerItemPrefab.SetBackgroundImage(winElement.GetBackgroundImage().sprite);
+            var item = new Item(
+                winElement.GetName(),
+                winElement.GetMainImage().sprite,
+                winElement.GetBackgroundImage().sprite,
+                winElement.GetTypePriceImage().sprite,
+                winElement.GetTypePrice(),
+                winElement.GetPrice());
             User.AddItem(item);
         }
 
@@ -72,18 +83,19 @@ namespace Resources.Scripts.Roulette
             canScroll = false;
             winnerPanel.SetActive(false);
             GenerateRandomItem();
-            startScrollButton.enabled = !(User.GetMoney() < priceCase);
+            startScrollButton.enabled = !(User.GetCountMoney() < priceCase);
         }
 
         public void ExtraFinishScroll()
         {
             canScroll = false;
         }
+
         private void GenerateScrollLine()
         {
             if (listPrefabs.Count != 0) return;
 
-            for (var i = 0; i < 50; i++)
+            for (var i = 0; i < 56; i++)
             {
                 var instantiate = Instantiate(itemPrefab, mainPanel.transform);
                 listPrefabs.Add(instantiate);
@@ -96,21 +108,21 @@ namespace Resources.Scripts.Roulette
             m_RectTransformPanel.offsetMin = new Vector2(startPositionPanelLeft, 20);
             foreach (var elementMeta in listPrefabs.Select(prefab => prefab.GetComponent<ListElement>()))
             {
-                elementMeta.SetImage(items[Random.Range(0, items.Count)].GetImage());
+                elementMeta.SetMainImage(items[Random.Range(0, items.Count)].GetMainImage());
+                elementMeta.SetBackgroundImage(items[Random.Range(0, items.Count)].GetBackgroundImage());
                 elementMeta.SetTitle(items[Random.Range(0, items.Count)].GetName());
-                elementMeta.SetPrice(items[Random.Range(0, items.Count)].GetPrice());
+                elementMeta.SetPrice(TypePrice.Gem, items[Random.Range(0, items.Count)].GetPrice());
             }
         }
 
-        public void ClickOnCase(string nameCase, float priceCase, List<IItem> items)
+        public void ClickOnCase(string nameCase, int priceCase, TypePrice typePrice, List<IItem> items)
         {
             this.priceCase = priceCase;
             this.nameCase.text = nameCase;
-            startScrollButtonText.text = "Открыть ($" + this.priceCase + ")";
+            string nameType = typePrice == TypePrice.Gem ? "гемов" : "монет";
+            startScrollButtonText.text = "Открыть (" + this.priceCase + nameType + ")";
             this.items = items;
-            startScrollButton.enabled = !(User.GetMoney() < priceCase);
-            // listPrefabs = new List<GameObject>();
-
+            startScrollButton.enabled = !(User.GetCountMoney() < priceCase);
             GenerateScrollLine();
             GenerateRandomItem();
         }

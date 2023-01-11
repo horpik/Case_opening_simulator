@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Resources.Scripts.Enums;
 using Resources.Scripts.Items;
 using UnityEngine;
 
@@ -6,13 +7,21 @@ namespace Resources.Scripts
 {
     public static class User
     {
-        private static float myMoney = 1000f;
+        private static int myGem = 10;
+        private static int myMoney = 10;
         private static List<IItem> items;
 
         static User()
         {
             items = new List<IItem>()
             {
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
             };
         }
 
@@ -31,12 +40,22 @@ namespace Resources.Scripts
             return items;
         }
 
-        public static float GetMoney()
+        public static int GetCountMoney()
         {
             return myMoney;
         }
 
-        public static void AddMoney(float money)
+        public static int GetCountGem()
+        {
+            return myGem;
+        }
+
+        public static void AddMoney(int money)
+        {
+            myMoney += money;
+        }
+
+        public static void AddGem(int money)
         {
             myMoney += money;
         }

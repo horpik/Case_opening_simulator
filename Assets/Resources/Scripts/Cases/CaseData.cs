@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Resources.Scripts.Enums;
 using Resources.Scripts.Items;
 using UnityEngine;
 
@@ -15,67 +16,71 @@ namespace Resources.Scripts.Cases
                 new Case(
                     "Обычный\nящик",
                     UnityEngine.Resources.Load<Sprite>("Sprites/CaseImg/Brawl_Box"),
-                    40f,
+                    UnityEngine.Resources.Load<Sprite>("Sprites/CaseImg/Brawl_Box_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    40,
                     new List<IItem>()
                     {
-                        new Item("Гем1", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем2", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем3", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем4", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем5", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем6", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем7", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем8", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем9", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
+                        new Item(
+                            "Гем1",
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                            TypePrice.Gem,
+                            10)
                     }),
                 new Case(
                     "Большой\nящик",
                     UnityEngine.Resources.Load<Sprite>("Sprites/CaseImg/Big_Box"),
-                    30f,
+                    UnityEngine.Resources.Load<Sprite>("Sprites/CaseImg/Big_Box_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    50,
                     new List<IItem>()
                     {
-                        new Item("Гем1", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем2", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем3", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем4", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем5", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем6", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем7", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем8", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем9", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
+                        new Item(
+                            "Гем1",
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                            TypePrice.Gem,
+                            10)
                     }),
                 new Case(
                     "Мегаящик",
                     UnityEngine.Resources.Load<Sprite>("Sprites/CaseImg/Mega_Box"),
-                    10f,
+                    UnityEngine.Resources.Load<Sprite>("Sprites/CaseImg/Mega_Box_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    60,
                     new List<IItem>()
                     {
-                        new Item("Гем1", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем2", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем3", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем4", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем5", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем6", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем7", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем8", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем9", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
+                        new Item(
+                            "Гем1",
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                            TypePrice.Gem,
+                            10)
                     }),
                 new Case(
                     "Омегаящик",
                     UnityEngine.Resources.Load<Sprite>("Sprites/CaseImg/Omega_Box"),
-                    15f,
+                    UnityEngine.Resources.Load<Sprite>("Sprites/CaseImg/Omega_Box_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    80,
                     new List<IItem>()
                     {
-                        new Item("Гем1", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем2", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем3", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем4", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем5", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем6", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем7", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем8", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                        new Item("Гем9", UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"), 10f),
-                    })
+                        new Item(
+                            "Гем1",
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                            TypePrice.Gem,
+                            10)
+                    }),
             };
         }
 

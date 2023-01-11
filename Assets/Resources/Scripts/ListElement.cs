@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Resources.Scripts.Enums;
 using Resources.Scripts.Items;
 using TMPro;
 using UnityEngine;
@@ -12,32 +13,36 @@ namespace Resources.Scripts
         [Header("Components")] [SerializeField]
         private RectTransform myTransform;
 
-        [Space] [SerializeField] private Image myImage;
+        [Space] [SerializeField] private Image myMainImage;
+        [SerializeField] private Image myPriceImage;
+        [SerializeField] private Image myBackgroundImage;
         [SerializeField] private TextMeshProUGUI myName;
         [SerializeField] private TextMeshProUGUI myPriceText;
         [SerializeField] private Button myActionButton;
-        private List<IItem> _myItems;
         private IItem _myItem;
-        private float myPrice;
+        private int myPrice;
+        private TypePrice myTypePrice;
         public void SetTitle(string title) => myName.text = title;
-        public void SetImage(Sprite image) => myImage.sprite = image;
+        public void SetMainImage(Sprite image) => myMainImage.sprite = image;
+        public void SetBackgroundImage(Sprite image) => myBackgroundImage.sprite = image;
+        public void SetPriceImage(Sprite image) => myPriceImage.sprite = image;
 
-        public void SetPrice(float price)
+        public void SetPrice(TypePrice typePrice, int price)
         {
             myPrice = price;
-            myPriceText.text = myPrice + "$";
+            myTypePrice = typePrice;
+            myPriceText.text = myPrice.ToString();
         }
 
-        public void SetList(List<IItem> items) => _myItems = items;
-
-        public float GetPrice() => myPrice;
+        public TypePrice GetTypePrice() => myTypePrice;
+        public int GetPrice() => myPrice;
+        public Image GetTypePriceImage() => myPriceImage;
         public string GetName() => myName.text;
-        public Image GetImage() => myImage;
-
+        public Image GetMainImage() => myMainImage;
+        public Image GetPriceImage() => myMainImage;
+        public Image GetBackgroundImage() => myBackgroundImage;
         public float Height() => myTransform.rect.height;
         public float Width() => myTransform.rect.width;
-
-
         public Button GetActionButton() => this.myActionButton;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Resources.Scripts.Enums;
 using Resources.Scripts.Items;
 using UnityEngine;
 
@@ -7,36 +8,33 @@ namespace Resources.Scripts.Cases
     public class Case : ICase
     {
         private List<IItem> myItems;
-        private Sprite myImage;
-        private float myPrice;
+        private Sprite myMainImage;
+        private Sprite myBackgroundImage;
+        private int myPrice;
         private string myName;
+        private TypePrice myTypePrice;
+        private Sprite myTypePriceImage;
 
-        public Case(string name, Sprite image, float price, List<IItem> items)
+
+        public Case(string name, Sprite mainImage, Sprite backgroundImage, Sprite typePriceImage, TypePrice typePrice,
+            int price,
+            List<IItem> items)
         {
             myName = name;
-            myImage = image;
+            myMainImage = mainImage;
+            myBackgroundImage = backgroundImage;
+            myTypePriceImage = typePriceImage;
+            myTypePrice = typePrice;
             myPrice = price;
             myItems = items;
         }
 
-        public string GetName()
-        {
-            return myName;
-        }
-
-        public Sprite GetImage()
-        {
-            return myImage;
-        }
-
-        public float GetPrice()
-        {
-            return myPrice;
-        }
-
-        public List<IItem> GetItems()
-        {
-            return myItems;
-        }
+        public TypePrice GetTypePrice() => myTypePrice;
+        public Sprite GetTypePriceImage() => myTypePriceImage;
+        public string GetName() => myName;
+        public Sprite GetMainImage() => myMainImage;
+        public Sprite GetBackgroundImage() => myBackgroundImage;
+        public int GetPrice() => myPrice;
+        public List<IItem> GetItems() => myItems;
     }
 }
