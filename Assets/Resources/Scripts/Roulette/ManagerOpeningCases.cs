@@ -35,7 +35,8 @@ namespace Resources.Scripts.Roulette
         private bool canScroll;
         private float widthPrefab;
         private int priceCase;
-        private TypePrice priceTypeCase;
+        private int weightItems;
+        private TypePrice typePriceCase;
 
         private void Start()
         {
@@ -61,7 +62,7 @@ namespace Resources.Scripts.Roulette
         {
             if (!canScroll)
             {
-                if (priceTypeCase == TypePrice.Gem)
+                if (typePriceCase == TypePrice.Gem)
                 {
                     User.AddGem(-priceCase);
                 }
@@ -99,7 +100,8 @@ namespace Resources.Scripts.Roulette
                 winElement.GetBackgroundImage().sprite,
                 winElement.GetTypePriceImage().sprite,
                 winElement.GetTypePrice(),
-                winElement.GetPrice());
+                winElement.GetPrice(),
+                winElement.GetWeight());
             User.AddItem(item);
         }
 
@@ -131,21 +133,39 @@ namespace Resources.Scripts.Roulette
         {
             speed = scrollSpeed;
             m_RectTransformPanel.offsetMin = new Vector2(startPositionPanelLeft, 20);
+
             foreach (var elementMeta in listPrefabs.Select(prefab => prefab.GetComponent<ListElement>()))
             {
-                elementMeta.SetMainImage(items[Random.Range(0, items.Count)].GetMainImage());
-                elementMeta.SetPriceImage(items[Random.Range(0, items.Count)].GetMainImage());
-                elementMeta.SetBackgroundImage(items[Random.Range(0, items.Count)].GetBackgroundImage());
-                elementMeta.SetTitle(items[Random.Range(0, items.Count)].GetName());
-                elementMeta.SetPrice(TypePrice.Gem, items[Random.Range(0, items.Count)].GetPrice());
+                int indexItem = GetRandomIndex();
+                elementMeta.SetMainImage(items[indexItem].GetMainImage());
+                elementMeta.SetPriceImage(items[indexItem].GetMainImage());
+                elementMeta.SetBackgroundImage(items[indexItem].GetBackgroundImage());
+                elementMeta.SetTitle(items[indexItem].GetName());
+                elementMeta.SetPrice(items[indexItem].GetTypePrice(), items[indexItem].GetPrice());
+                elementMeta.SetWeight(items[indexItem].GetWeight());
             }
         }
 
-        public void ClickOnCase(string nameCase, int priceCase, TypePrice typePrice, List<IItem> items)
+        private int GetRandomIndex()
+        {
+            int index;
+            int rndWeight = Random.Range(0, weightItems);
+            for (index = 0; index < items.Count && rndWeight >= 0; index++)
+            {
+                rndWeight -= items[index].GetWeight();
+            }
+
+            if (index == items.Count) index -= 1;
+
+            return index;
+        }
+
+        public void ClickOnCase(string nameCase, int priceCase, TypePrice typePrice, List<IItem> items, int weightItems)
         {
             this.priceCase = priceCase;
             this.nameCase.text = nameCase;
-            priceTypeCase = typePrice;
+            typePriceCase = typePrice;
+            this.weightItems = weightItems;
             startScrollButtonText.text = "Открыть (" + this.priceCase + ")";
             this.items = items;
             startScrollButton.enabled = !(User.GetCountMoney() < priceCase);

@@ -11,6 +11,7 @@ namespace Resources.Scripts.Items
         public Sprite GetBackgroundImage();
         public void SetState(bool state);
         public bool GetState();
+        public int GetWeight();
         public TypePrice GetTypePrice();
         public Sprite GetTypePriceImage();
     }

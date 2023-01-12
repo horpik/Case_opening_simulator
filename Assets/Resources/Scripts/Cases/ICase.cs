@@ -14,5 +14,6 @@ namespace Resources.Scripts.Cases
         public List<IItem> GetItems();
         public TypePrice GetTypePrice();
         public Sprite GetTypePriceImage();
+        public int GetWeight();
     }
 }

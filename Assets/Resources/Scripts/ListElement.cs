@@ -24,11 +24,13 @@ namespace Resources.Scripts
 
         private IItem _myItem;
         private int myPrice;
+        private int myWeight;
         private TypePrice myTypePrice;
         public void SetTitle(string title) => myName.text = title;
         public void SetMainImage(Sprite image) => myMainImage.sprite = image;
         public void SetBackgroundImage(Sprite image) => myBackgroundImage.sprite = image;
         public void SetPriceImage(Sprite image) => myPriceImage.sprite = image;
+        public void SetWeight(int weight) => myWeight = weight;
 
         public void SetPrice(TypePrice typePrice, int price)
         {
@@ -39,6 +41,7 @@ namespace Resources.Scripts
 
         public TypePrice GetTypePrice() => myTypePrice;
         public int GetPrice() => myPrice;
+        public int GetWeight() => myWeight;
         public Image GetTypePriceImage() => myPriceImage;
         public string GetName() => myName.text;
         public Image GetMainImage() => myMainImage;

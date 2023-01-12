@@ -13,9 +13,10 @@ namespace Resources.Scripts.Items
         private bool canBeSelected = true;
         private TypePrice myTypePrice;
         private Sprite myTypePriceImage;
+        private int myWeight;
 
         public Item(string name, Sprite mainImage, Sprite backgroundImage, Sprite typePriceImage, TypePrice typePrice,
-            int price)
+            int price, int weight)
         {
             myName = name;
             myMainImage = mainImage;
@@ -23,7 +24,10 @@ namespace Resources.Scripts.Items
             myTypePriceImage = typePriceImage;
             myTypePrice = typePrice;
             myPrice = price;
+            myWeight = weight;
         }
+
+        public int GetWeight() => myWeight;
 
         public TypePrice GetTypePrice() => myTypePrice;
         public int GetPrice() => myPrice;

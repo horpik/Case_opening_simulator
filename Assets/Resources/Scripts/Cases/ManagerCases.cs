@@ -32,9 +32,12 @@ namespace Resources.Scripts.Cases
                 Button actionButton = elementMeta.GetActionButton();
                 actionButton.onClick.AddListener(() =>
                 {
-                    Debug.Log("click on button");
-                    managerOpeningCases.ClickOnCase(_case.GetName(), _case.GetPrice(), _case.GetTypePrice(),
-                        _case.GetItems());
+                    managerOpeningCases.ClickOnCase(
+                        _case.GetName(),
+                        _case.GetPrice(),
+                        _case.GetTypePrice(),
+                        _case.GetItems(),
+                        _case.GetWeight());
                     managerScreen.OpenScreenOpeningCases();
                 });
             }

@@ -36,5 +36,16 @@ namespace Resources.Scripts.Cases
         public Sprite GetBackgroundImage() => myBackgroundImage;
         public int GetPrice() => myPrice;
         public List<IItem> GetItems() => myItems;
+
+        public int GetWeight()
+        {
+            int result = 0;
+            foreach (var item in myItems)
+            {
+                result += item.GetWeight();
+            }
+
+            return result;
+        }
     }
 }

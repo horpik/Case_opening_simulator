@@ -28,6 +28,23 @@ namespace Resources.Scripts.Cases
                             UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
                             UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
                             TypePrice.Gem,
+                            10,
+                            1),
+                        new Item(
+                            "Гем2",
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                            TypePrice.Gem,
+                            10,
+                            2),
+                        new Item(
+                            "Гем3",
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gold"),
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gold_Back"),
+                            UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gold"),
+                            TypePrice.Gold,
+                            10,
                             10)
                     }),
                 new Case(
@@ -45,6 +62,7 @@ namespace Resources.Scripts.Cases
                             UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
                             UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
                             TypePrice.Gem,
+                            10,
                             10)
                     }),
                 new Case(
@@ -62,6 +80,7 @@ namespace Resources.Scripts.Cases
                             UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
                             UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
                             TypePrice.Gem,
+                            10,
                             10)
                     }),
                 new Case(
@@ -79,6 +98,7 @@ namespace Resources.Scripts.Cases
                             UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
                             UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
                             TypePrice.Gem,
+                            10,
                             10)
                     }),
             };
