@@ -17,8 +17,8 @@ namespace Resources.Scripts.Cases
                     "Обычный\nящик",
                     UnityEngine.Resources.Load<Sprite>("Sprites/CaseImg/Brawl_Box"),
                     UnityEngine.Resources.Load<Sprite>("Sprites/CaseImg/Brawl_Box_Back"),
-                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
-                    TypePrice.Gem,
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gold"),
+                    TypePrice.Gold,
                     40,
                     new List<IItem>()
                     {

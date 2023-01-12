@@ -4,21 +4,26 @@ using Resources.Scripts.Enums;
 using Resources.Scripts.Items;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Resources.Scripts.Roulette
 {
     public class ManagerOpeningCases : MonoBehaviour
     {
-        [SerializeField] private GameObject itemPrefab;
+        [Header("Prefabs")] [SerializeField] private GameObject itemPrefab;
         [SerializeField] private GameObject mainPanel;
-        [SerializeField] private TextMeshProUGUI nameCase;
+
+        [Header("Texts")] [SerializeField] private TextMeshProUGUI nameCase;
         [SerializeField] private TextMeshProUGUI startScrollButtonText;
-        [SerializeField] private GameObject winnerPanel;
+
+        [Header("Win panel elements")] [SerializeField]
+        private GameObject winnerPanel;
+
         [SerializeField] private WinElement winnerItemPrefab;
-        [SerializeField] private Button startScrollButton;
-        [SerializeField] private float scrollSpeed;
+
+        [Header("Buttons")] [SerializeField] private Button startScrollButton;
+
+        [Header("Settings")] [SerializeField] private float scrollSpeed;
         [SerializeField] private float startPositionPanelLeft;
         [SerializeField] private float spacingBetweenElements;
 
@@ -30,6 +35,7 @@ namespace Resources.Scripts.Roulette
         private bool canScroll;
         private float widthPrefab;
         private int priceCase;
+        private TypePrice priceTypeCase;
 
         private void Start()
         {
@@ -47,11 +53,30 @@ namespace Resources.Scripts.Roulette
             if (speed <= 0)
             {
                 canScroll = false;
-                ShowPanelWinItem(listPrefabs[GetWinIndex()]);
+                ShowPanelWinItem(listPrefabs[GetWinItemIndex()]);
             }
         }
 
-        private int GetWinIndex()
+        public void StartScroll()
+        {
+            if (!canScroll)
+            {
+                if (priceTypeCase == TypePrice.Gem)
+                {
+                    User.AddGem(-priceCase);
+                }
+                else
+                {
+                    User.AddMoney(-priceCase);
+                }
+
+                canScroll = true;
+                startScrollButton.enabled = false;
+                ManagerEvent.ActivateChangeMoney();
+            }
+        }
+
+        private int GetWinItemIndex()
         {
             var finishPositionPanelLeft = m_RectTransformPanel.offsetMin.x;
             var rangeScrollLine = (finishPositionPanelLeft - startPositionPanelLeft) * (-1);
@@ -78,7 +103,7 @@ namespace Resources.Scripts.Roulette
             User.AddItem(item);
         }
 
-        public void ClosePanelWinItem()
+        public void ClosePanelWinner()
         {
             canScroll = false;
             winnerPanel.SetActive(false);
@@ -109,6 +134,7 @@ namespace Resources.Scripts.Roulette
             foreach (var elementMeta in listPrefabs.Select(prefab => prefab.GetComponent<ListElement>()))
             {
                 elementMeta.SetMainImage(items[Random.Range(0, items.Count)].GetMainImage());
+                elementMeta.SetPriceImage(items[Random.Range(0, items.Count)].GetMainImage());
                 elementMeta.SetBackgroundImage(items[Random.Range(0, items.Count)].GetBackgroundImage());
                 elementMeta.SetTitle(items[Random.Range(0, items.Count)].GetName());
                 elementMeta.SetPrice(TypePrice.Gem, items[Random.Range(0, items.Count)].GetPrice());
@@ -119,8 +145,8 @@ namespace Resources.Scripts.Roulette
         {
             this.priceCase = priceCase;
             this.nameCase.text = nameCase;
-            string nameType = typePrice == TypePrice.Gem ? "гемов" : "монет";
-            startScrollButtonText.text = "Открыть (" + this.priceCase + nameType + ")";
+            priceTypeCase = typePrice;
+            startScrollButtonText.text = "Открыть (" + this.priceCase + ")";
             this.items = items;
             startScrollButton.enabled = !(User.GetCountMoney() < priceCase);
             GenerateScrollLine();
@@ -137,17 +163,6 @@ namespace Resources.Scripts.Roulette
             }
 
             listPrefabs.Clear();
-        }
-
-        public void StartScroll()
-        {
-            if (!canScroll)
-            {
-                canScroll = true;
-                startScrollButton.enabled = false;
-                User.AddMoney(-priceCase);
-                ManagerEvent.ActivateChangeMoney();
-            }
         }
     }
 }

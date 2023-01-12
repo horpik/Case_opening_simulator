@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using Resources.Scripts.Roulette;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Resources.Scripts.Cases
 {
     public class ManagerCases : MonoBehaviour
     {
-        [Header("Components")] [SerializeField]
-        private ListView listViewCases;
+        [Header("ListView")] [SerializeField] private ListView listViewCases;
 
-        [SerializeField] private GameObject casePrefab;
-        [SerializeField] private ManagerOpeningCases managerOpeningCases;
+        [Header("Prefabs")] [SerializeField] private GameObject casePrefab;
+
+        [Header("Managers")] [SerializeField] private ManagerOpeningCases managerOpeningCases;
         [SerializeField] private ManagerScreen managerScreen;
+
         private List<ICase> _listElements;
 
 
@@ -33,7 +33,8 @@ namespace Resources.Scripts.Cases
                 actionButton.onClick.AddListener(() =>
                 {
                     Debug.Log("click on button");
-                    managerOpeningCases.ClickOnCase(_case.GetName(), _case.GetPrice(), _case.GetTypePrice(),_case.GetItems());
+                    managerOpeningCases.ClickOnCase(_case.GetName(), _case.GetPrice(), _case.GetTypePrice(),
+                        _case.GetItems());
                     managerScreen.OpenScreenOpeningCases();
                 });
             }

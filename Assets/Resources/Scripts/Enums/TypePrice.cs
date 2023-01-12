@@ -3,6 +3,6 @@
     public enum TypePrice
     {
         Gem,
-        Money
+        Gold
     }
 }

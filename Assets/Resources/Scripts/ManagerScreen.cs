@@ -33,6 +33,7 @@ namespace Resources.Scripts
             ManagerEvent.Change += ChangeMoney;
             OpenScreenCases();
             countMoney.text = User.GetCountMoney().ToString();
+            countGem.text = User.GetCountGem().ToString();
             casesButtonImage.sprite = imagesButton[1];
             inventoryButtonImage.sprite = imagesButton[0];
         }
@@ -59,7 +60,7 @@ namespace Resources.Scripts
             cases.enabled = true;
             casesButtonImage.sprite = imagesButton[1];
             inventoryButtonImage.sprite = imagesButton[0];
-            managerOpeningCases.ClosePanelWinItem();
+            managerOpeningCases.ExtraFinishScroll();
             imageBackground.sprite = imagesBackground[0];
         }
 
@@ -75,7 +76,8 @@ namespace Resources.Scripts
 
         private void ChangeMoney()
         {
-            countMoney.text = User.GetCountMoney() + "$";
+            countMoney.text = User.GetCountMoney().ToString();
+            countGem.text = User.GetCountGem().ToString();
         }
     }
 }

@@ -13,12 +13,15 @@ namespace Resources.Scripts
         [Header("Components")] [SerializeField]
         private RectTransform myTransform;
 
-        [Space] [SerializeField] private Image myMainImage;
+        [Header("Images")] [SerializeField] private Image myMainImage;
         [SerializeField] private Image myPriceImage;
         [SerializeField] private Image myBackgroundImage;
-        [SerializeField] private TextMeshProUGUI myName;
+
+        [Header("Texts")] [SerializeField] private TextMeshProUGUI myName;
         [SerializeField] private TextMeshProUGUI myPriceText;
-        [SerializeField] private Button myActionButton;
+
+        [Header("Button")] [SerializeField] private Button myActionButton;
+
         private IItem _myItem;
         private int myPrice;
         private TypePrice myTypePrice;

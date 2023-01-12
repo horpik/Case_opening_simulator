@@ -7,14 +7,173 @@ namespace Resources.Scripts
 {
     public static class User
     {
-        private static int myGem = 10;
-        private static int myMoney = 10;
+        private static int myGem = 1000;
+        private static int myMoney = 2000;
         private static List<IItem> items;
 
         static User()
         {
             items = new List<IItem>()
             {
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gold"),
+                    TypePrice.Gold,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
+                new Item(
+                    "Гем1",
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
+                    TypePrice.Gem,
+                    10),
                 new Item(
                     "Гем1",
                     UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
@@ -55,9 +214,9 @@ namespace Resources.Scripts
             myMoney += money;
         }
 
-        public static void AddGem(int money)
+        public static void AddGem(int gem)
         {
-            myMoney += money;
+            myGem += gem;
         }
     }
 }
