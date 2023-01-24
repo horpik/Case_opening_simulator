@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Resources.Scripts.AllData;
 using Resources.Scripts.Enums;
 using Resources.Scripts.Items;
 using UnityEngine;
@@ -17,10 +18,10 @@ namespace Resources.Scripts
             {
                 new Item(
                     "Гем1",
-                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
-                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem_Back"),
-                    UnityEngine.Resources.Load<Sprite>("Sprites/ItemImg/Gem"),
-                    TypePrice.Gem,
+                    UnityEngine.Resources.Load<Sprite>("Sprites/Item/Gem"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/Item/Gem_Back"),
+                    UnityEngine.Resources.Load<Sprite>("Sprites/Item/Gem"),
+                    TypeCurrency.Gem,
                     10, 
                     10),
             };

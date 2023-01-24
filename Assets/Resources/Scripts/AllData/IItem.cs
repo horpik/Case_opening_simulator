@@ -1,7 +1,7 @@
 ﻿using Resources.Scripts.Enums;
 using UnityEngine;
 
-namespace Resources.Scripts.Items
+namespace Resources.Scripts.AllData
 {
     public interface IItem
     {
@@ -12,7 +12,7 @@ namespace Resources.Scripts.Items
         public void SetState(bool state);
         public bool GetState();
         public int GetWeight();
-        public TypePrice GetTypePrice();
+        public TypeCurrency GetTypePrice();
         public Sprite GetTypePriceImage();
     }
 }

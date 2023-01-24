@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Resources.Scripts.AllData;
 using Resources.Scripts.Enums;
 using TMPro;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace Resources.Scripts.Items
 {
     public class ManagerItems : MonoBehaviour
     {
-        [Header("ListView")] [SerializeField] private ListView listViewItems;
+        [Header("ListView")] [SerializeField] private ListViewItems listViewItems;
 
         [Header("Prefabs")] [SerializeField] private GameObject itemPrefab;
 
@@ -39,12 +40,12 @@ namespace Resources.Scripts.Items
             foreach (var item in _listElements)
             {
                 GameObject element = listViewItems.Add(itemPrefab);
-                ListElement elementMeta = element.GetComponent<ListElement>();
-                elementMeta.SetTitle(item.GetName());
+                ListElementItem elementMeta = element.GetComponent<ListElementItem>();
+                elementMeta.SetItem(item);
+                elementMeta.SetName(item.GetName());
                 elementMeta.SetMainImage(item.GetMainImage());
-                elementMeta.SetPriceImage(item.GetTypePriceImage());
                 elementMeta.SetBackgroundImage(item.GetBackgroundImage());
-                elementMeta.SetPrice(item.GetTypePrice(), item.GetPrice());
+                elementMeta.SetPrice(item.GetPrice());
                 Button actionButton = elementMeta.GetActionButton();
                 actionButton.onClick.AddListener(() =>
                 {
@@ -52,7 +53,7 @@ namespace Resources.Scripts.Items
                     {
                         item.SetState(false);
                         actionButton.image.color = new Color(178f, 184f, 195f, 0.2f);
-                        if (item.GetTypePrice() == TypePrice.Gem)
+                        if (item.GetTypePrice() == TypeCurrency.Gem)
                         {
                             sumSelectedItemsGem += item.GetPrice();
                         }
@@ -65,7 +66,7 @@ namespace Resources.Scripts.Items
                     {
                         item.SetState(true);
                         actionButton.image.color = new Color(178f, 184f, 195f, 0f);
-                        if (item.GetTypePrice() == TypePrice.Gem)
+                        if (item.GetTypePrice() == TypeCurrency.Gem)
                         {
                             sumSelectedItemsGem -= item.GetPrice();
                         }

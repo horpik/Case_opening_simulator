@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using Resources.Scripts.Enums;
-using Resources.Scripts.Items;
 using UnityEngine;
 
-namespace Resources.Scripts.Cases
+namespace Resources.Scripts.AllData
 {
     public interface ICase
     {
@@ -12,7 +11,7 @@ namespace Resources.Scripts.Cases
         public Sprite GetBackgroundImage();
         public int GetPrice();
         public List<IItem> GetItems();
-        public TypePrice GetTypePrice();
+        public TypeCurrency GetTypePrice();
         public Sprite GetTypePriceImage();
         public int GetWeight();
     }

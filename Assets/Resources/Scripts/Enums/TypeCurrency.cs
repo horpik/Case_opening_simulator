@@ -1,6 +1,6 @@
 ﻿namespace Resources.Scripts.Enums
 {
-    public enum TypePrice
+    public enum TypeCurrency
     {
         Gem,
         Gold

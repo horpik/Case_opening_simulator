@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Resources.Scripts.AllData;
 using Resources.Scripts.Enums;
 using Resources.Scripts.Items;
 using TMPro;
@@ -36,7 +37,7 @@ namespace Resources.Scripts.Roulette
         private float widthPrefab;
         private int priceCase;
         private int weightItems;
-        private TypePrice typePriceCase;
+        private TypeCurrency typeCurrencyCase;
 
         private void Start()
         {
@@ -62,7 +63,7 @@ namespace Resources.Scripts.Roulette
         {
             if (!canScroll)
             {
-                if (typePriceCase == TypePrice.Gem)
+                if (typeCurrencyCase == TypeCurrency.Gem)
                 {
                     User.AddGem(-priceCase);
                 }
@@ -90,27 +91,33 @@ namespace Resources.Scripts.Roulette
         private void ShowPanelWinItem(GameObject winItem)
         {
             winnerPanel.SetActive(true);
-            var winElement = winItem.GetComponent<ListElement>();
-            winnerItemPrefab.SetTitle(winElement.GetName());
-            winnerItemPrefab.SetMainImage(winElement.GetMainImage().sprite);
-            winnerItemPrefab.SetBackgroundImage(winElement.GetBackgroundImage().sprite);
-            var item = new Item(
-                winElement.GetName(),
-                winElement.GetMainImage().sprite,
-                winElement.GetBackgroundImage().sprite,
-                winElement.GetTypePriceImage().sprite,
-                winElement.GetTypePrice(),
-                winElement.GetPrice(),
-                winElement.GetWeight());
-            User.AddItem(item);
+            var winElement = winItem.GetComponent<ListElementRouletteItem>();
+            var item = winElement.GetItem();
+            winnerItemPrefab.SetTitle(item.GetName());
+            winnerItemPrefab.SetMainImage(item.GetMainImage());
+            winnerItemPrefab.SetBackgroundImage(item.GetBackgroundImage());
+            User.AddItem(new Item(
+                item.GetName(),
+                item.GetMainImage(),
+                item.GetBackgroundImage(),
+                item.GetTypePriceImage(),
+                item.GetTypePrice(),
+                item.GetPrice(),
+                item.GetWeight()));
+        }
+
+        public void ClickOnCLose()
+        {
+            ClosePanelWinner();
+            GenerateRandomItem();
+            startScrollButton.enabled = !(User.GetCountMoney() < priceCase);
         }
 
         public void ClosePanelWinner()
         {
+            if (!winnerPanel.activeSelf) return;
             canScroll = false;
             winnerPanel.SetActive(false);
-            GenerateRandomItem();
-            startScrollButton.enabled = !(User.GetCountMoney() < priceCase);
         }
 
         public void ExtraFinishScroll()
@@ -134,15 +141,13 @@ namespace Resources.Scripts.Roulette
             speed = scrollSpeed;
             m_RectTransformPanel.offsetMin = new Vector2(startPositionPanelLeft, 20);
 
-            foreach (var elementMeta in listPrefabs.Select(prefab => prefab.GetComponent<ListElement>()))
+            foreach (var elementMeta in listPrefabs.Select(prefab => prefab.GetComponent<ListElementRouletteItem>()))
             {
                 int indexItem = GetRandomIndex();
+                elementMeta.SetItem(items[indexItem]);
                 elementMeta.SetMainImage(items[indexItem].GetMainImage());
-                elementMeta.SetPriceImage(items[indexItem].GetMainImage());
                 elementMeta.SetBackgroundImage(items[indexItem].GetBackgroundImage());
-                elementMeta.SetTitle(items[indexItem].GetName());
-                elementMeta.SetPrice(items[indexItem].GetTypePrice(), items[indexItem].GetPrice());
-                elementMeta.SetWeight(items[indexItem].GetWeight());
+                elementMeta.SetName(items[indexItem].GetName());
             }
         }
 
@@ -160,11 +165,12 @@ namespace Resources.Scripts.Roulette
             return index;
         }
 
-        public void ClickOnCase(string nameCase, int priceCase, TypePrice typePrice, List<IItem> items, int weightItems)
+        public void ClickOnCase(string nameCase, int priceCase, TypeCurrency typeCurrency, List<IItem> items,
+            int weightItems)
         {
             this.priceCase = priceCase;
             this.nameCase.text = nameCase;
-            typePriceCase = typePrice;
+            typeCurrencyCase = typeCurrency;
             this.weightItems = weightItems;
             startScrollButtonText.text = "Открыть (" + this.priceCase + ")";
             this.items = items;

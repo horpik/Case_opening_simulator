@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Resources.Scripts.Achievement;
 using Resources.Scripts.Cases;
 using Resources.Scripts.Items;
 using Resources.Scripts.Roulette;
@@ -27,18 +28,20 @@ namespace Resources.Scripts
         [Header("Managers")] [SerializeField] private ManagerOpeningCases managerOpeningCases;
         [SerializeField] private ManagerItems managerItems;
         [SerializeField] private ManagerCases managerCases;
+        [SerializeField] private ManagerAchievement managerAchievement;
 
-        public void Awake()
+        public void Start()
         {
             ManagerEvent.Change += ChangeMoney;
-            OpenScreenCases();
+            ClickOnCases();
             countMoney.text = User.GetCountMoney().ToString();
             countGem.text = User.GetCountGem().ToString();
             casesButtonImage.sprite = imagesButton[1];
             inventoryButtonImage.sprite = imagesButton[0];
+            managerCases.GeneratedCases();
         }
 
-        public void OpenScreenInventory()
+        public void ClickOnInventory()
         {
             if (inventory.enabled) return;
             cases.enabled = false;
@@ -48,28 +51,28 @@ namespace Resources.Scripts
             inventoryButtonImage.sprite = imagesButton[1];
             managerItems.FieldGeneration();
             managerOpeningCases.ExtraFinishScroll();
-            imageBackground.sprite = imagesBackground[1];
+            managerOpeningCases.ClosePanelWinner();
         }
 
-        public void OpenScreenCases()
+        public void ClickOnCases()
         {
             if (cases.enabled) return;
-            managerItems.OpenOtherScreen();
             inventory.enabled = false;
             openingCases.enabled = false;
             cases.enabled = true;
+            managerItems.OpenOtherScreen();
             casesButtonImage.sprite = imagesButton[1];
             inventoryButtonImage.sprite = imagesButton[0];
             managerOpeningCases.ExtraFinishScroll();
-            imageBackground.sprite = imagesBackground[0];
+            managerOpeningCases.ClosePanelWinner();
         }
 
-        public void OpenScreenOpeningCases()
+        public void ClickOnOpenCase()
         {
-            openingCases.enabled = true;
-            managerItems.OpenOtherScreen();
             inventory.enabled = false;
             cases.enabled = false;
+            openingCases.enabled = true;
+            managerItems.OpenOtherScreen();
             casesButtonImage.sprite = imagesButton[0];
             inventoryButtonImage.sprite = imagesButton[0];
         }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2289910983634031709}
-  - component: {fileID: 2289910983634031706}
+  - component: {fileID: 8218815610046285584}
   m_Layer: 0
   m_Name: Case Prefab
   m_TagString: Untagged
@@ -43,7 +43,7 @@ RectTransform:
   m_AnchoredPosition: {x: 87.5, y: -100}
   m_SizeDelta: {x: 150, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2289910983634031706
+--- !u!114 &8218815610046285584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2289910983634031708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50de9c4936b147ed800936c737685236, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ac419ca05fe4eab9d4d98375cd0e68e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myTransform: {fileID: 2289910983634031709}

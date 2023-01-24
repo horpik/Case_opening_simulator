@@ -5,44 +5,52 @@ using UnityEngine;
 
 namespace Resources.Scripts
 {
-    public class ListView : MonoBehaviour
+    public abstract class ListView : MonoBehaviour
     {
         [Header("Components")] [SerializeField]
-        private Transform m_ContentTransform;
+        protected Transform m_ContentTransform;
 
-        [SerializeField] private RectTransform m_ContentRectTransform;
+        [SerializeField] protected RectTransform m_ContentRectTransform;
 
-        [Header("Settings")] [SerializeField] private List<GameObject> m_elements;
-        [SerializeField] private float m_offsetX;
-        [SerializeField] private float m_offsetY;
-        [SerializeField] private int countElementInLine;
-        [SerializeField] private float startPositionX;
+        [Header("Settings")] [SerializeField] protected List<GameObject> m_elements;
+        
+        [SerializeField] protected float m_offsetY;
+        [SerializeField] protected int countElementInLine;
+        [SerializeField] protected float startPositionX;
 
-        private int _countElementInLineNow = 1;
-        private float defaultSizeContent;
-
-        private void Start()
+        public virtual GameObject Add(GameObject element)
         {
-            defaultSizeContent = m_ContentRectTransform.rect.height;
-        }
+            GameObject createdElement = Instantiate(element, this.m_ContentTransform);
 
-        // TODO оптимизировать код
-        public void SetDefaultSizeContent()
-        {
-            m_ContentRectTransform.sizeDelta = new Vector2(0, defaultSizeContent);
-        }
-
-        public void DestroyObjects()
-        {
-            foreach (var _object in m_elements)
+            if (this.m_elements.Count == 0)
             {
-                Destroy(_object);
+                this.m_elements.Add(createdElement);
+                return createdElement;
             }
 
-            m_elements = new List<GameObject>();
-        }
+            ListElement elementMeta = createdElement.GetComponent<ListElement>();
+            GameObject lastElement = this.m_elements.Last();
 
-        public GameObject Add(GameObject element)
+            Vector3 lastElementPosition = lastElement.transform.localPosition;
+
+            var newElementPosition = new Vector3
+            {
+                x = lastElementPosition.x,
+                y = lastElementPosition.y - elementMeta.Height() - m_offsetY,
+                z = lastElementPosition.z
+            };
+            float contentHeight = this.m_ContentRectTransform.rect.height;
+            contentHeight += this.m_offsetY + elementMeta.Height();
+            this.m_ContentRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, contentHeight);
+
+
+            createdElement.transform.localPosition = newElementPosition;
+            this.m_elements.Add(createdElement);
+
+            return createdElement;
+        }
+        /*private int _countElementInLineNow = 1;
+        public virtual GameObject Add(GameObject element)
         {
             GameObject createdElement = Instantiate(element, this.m_ContentTransform);
 
@@ -86,6 +94,6 @@ namespace Resources.Scripts
             this.m_elements.Add(createdElement);
 
             return createdElement;
-        }
+        }*/
     }
 }

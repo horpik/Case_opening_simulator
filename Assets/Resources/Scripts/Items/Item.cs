@@ -1,4 +1,5 @@
-﻿using Resources.Scripts.Enums;
+﻿using Resources.Scripts.AllData;
+using Resources.Scripts.Enums;
 using UnityEngine;
 
 namespace Resources.Scripts.Items
@@ -7,29 +8,34 @@ namespace Resources.Scripts.Items
     {
         private string myName;
         private Sprite myMainImage;
+
         private Sprite myBackgroundImage;
+
+        // TODO лишнее поле?
         private Sprite myImageState;
+
         private int myPrice;
         private bool canBeSelected = true;
-        private TypePrice myTypePrice;
+        private TypeCurrency myTypeCurrency;
         private Sprite myTypePriceImage;
         private int myWeight;
 
-        public Item(string name, Sprite mainImage, Sprite backgroundImage, Sprite typePriceImage, TypePrice typePrice,
+        public Item(string name, Sprite mainImage, Sprite backgroundImage, Sprite typePriceImage,
+            TypeCurrency typeCurrency,
             int price, int weight)
         {
             myName = name;
             myMainImage = mainImage;
             myBackgroundImage = backgroundImage;
             myTypePriceImage = typePriceImage;
-            myTypePrice = typePrice;
+            myTypeCurrency = typeCurrency;
             myPrice = price;
             myWeight = weight;
         }
 
         public int GetWeight() => myWeight;
 
-        public TypePrice GetTypePrice() => myTypePrice;
+        public TypeCurrency GetTypePrice() => myTypeCurrency;
         public int GetPrice() => myPrice;
         public string GetName() => myName;
         public Sprite GetMainImage() => canBeSelected ? myMainImage : myImageState;
