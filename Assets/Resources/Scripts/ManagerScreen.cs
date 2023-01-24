@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Resources.Scripts.Achievement;
 using Resources.Scripts.Cases;
 using Resources.Scripts.Items;
@@ -23,19 +24,21 @@ namespace Resources.Scripts
         [SerializeField] private Canvas openingCases;
 
         [Header("Currency")] [SerializeField] private TextMeshProUGUI countMoney;
-        [SerializeField] private TextMeshProUGUI countGem;
 
         [Header("Managers")] [SerializeField] private ManagerOpeningCases managerOpeningCases;
         [SerializeField] private ManagerItems managerItems;
         [SerializeField] private ManagerCases managerCases;
         [SerializeField] private ManagerAchievement managerAchievement;
 
+
+        [DllImport("__Internal")]
+        private static extern void AddMoneyExtern(int value);
+        
         public void Start()
         {
             ManagerEvent.Change += ChangeMoney;
             ClickOnCases();
             countMoney.text = User.GetCountMoney().ToString();
-            countGem.text = User.GetCountGem().ToString();
             casesButtonImage.sprite = imagesButton[1];
             inventoryButtonImage.sprite = imagesButton[0];
             managerCases.GeneratedCases();
@@ -80,7 +83,16 @@ namespace Resources.Scripts
         private void ChangeMoney()
         {
             countMoney.text = User.GetCountMoney().ToString();
-            countGem.text = User.GetCountGem().ToString();
+        }
+
+        public void ShowAdvButton()
+        {
+            AddMoneyExtern(40);
+        }
+
+        public void AddMoney(int value)
+        {
+            // TODO по видео
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Resources.Scripts.AllData;
-using Resources.Scripts.Enums;
 using Resources.Scripts.Items;
 using TMPro;
 using UnityEngine;
@@ -37,7 +36,6 @@ namespace Resources.Scripts.Roulette
         private float widthPrefab;
         private int priceCase;
         private int weightItems;
-        private TypeCurrency typeCurrencyCase;
 
         private void Start()
         {
@@ -63,15 +61,7 @@ namespace Resources.Scripts.Roulette
         {
             if (!canScroll)
             {
-                if (typeCurrencyCase == TypeCurrency.Gem)
-                {
-                    User.AddGem(-priceCase);
-                }
-                else
-                {
-                    User.AddMoney(-priceCase);
-                }
-
+                User.AddMoney(-priceCase);
                 canScroll = true;
                 startScrollButton.enabled = false;
                 ManagerEvent.ActivateChangeMoney();
@@ -100,8 +90,6 @@ namespace Resources.Scripts.Roulette
                 item.GetName(),
                 item.GetMainImage(),
                 item.GetBackgroundImage(),
-                item.GetTypePriceImage(),
-                item.GetTypePrice(),
                 item.GetPrice(),
                 item.GetWeight()));
         }
@@ -165,12 +153,11 @@ namespace Resources.Scripts.Roulette
             return index;
         }
 
-        public void ClickOnCase(string nameCase, int priceCase, TypeCurrency typeCurrency, List<IItem> items,
+        public void ClickOnCase(string nameCase, int priceCase, List<IItem> items,
             int weightItems)
         {
             this.priceCase = priceCase;
             this.nameCase.text = nameCase;
-            typeCurrencyCase = typeCurrency;
             this.weightItems = weightItems;
             startScrollButtonText.text = "Открыть (" + this.priceCase + ")";
             this.items = items;

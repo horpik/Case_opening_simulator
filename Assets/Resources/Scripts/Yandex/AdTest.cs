@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using UnityEngine;
 
 namespace Resources.Scripts.Yandex
@@ -16,9 +16,23 @@ namespace Resources.Scripts.Yandex
         {
             YandexSDK.YaSDK.onRewardedAdReward -= UserGotReward;
         }
+
+        public void ShowRewarded()
+        {
+            YandexSDK.YaSDK.instance.ShowRewarded(reward);
+        }
+
+        public void ShowInterstitial()
+        {
+            YandexSDK.YaSDK.instance.ShowInterstitial();
+        }
+
         public void UserGotReward(string reward)
         {
-            
+            if (this.reward == reward)
+            {
+                // Награда
+            }
         }
     }
-}
+}*/

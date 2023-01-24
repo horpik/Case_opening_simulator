@@ -1,7 +1,6 @@
-﻿using Resources.Scripts.AllData;
-using Resources.Scripts.Enums;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Resources.Scripts
@@ -9,27 +8,27 @@ namespace Resources.Scripts
     public abstract class ListElement : MonoBehaviour
     {
         [Header("Components")] [SerializeField]
-        private RectTransform myTransform;
+        private RectTransform transform;
 
-        [Header("Images")] [SerializeField] private Image myMainImage;
-        [SerializeField] private Image myBackgroundImage;
+        [Header("Images")] [SerializeField] private Image mainImage;
+        [SerializeField] private Image backgroundImage;
 
-        [Header("Texts")] [SerializeField] private TextMeshProUGUI myName;
-        
+        [Header("Texts")] [SerializeField] private TextMeshProUGUI name;
+
 
         // private int myPrice;
         //
         // private TypeCurrency myTypeCurrency;
-        public void SetName(string title) => myName.text = title;
-        public void SetMainImage(Sprite image) => myMainImage.sprite = image;
-        public void SetBackgroundImage(Sprite image) => myBackgroundImage.sprite = image;
-        public float Height() => myTransform.rect.height;
+        public void SetName(string title) => name.text = title;
+        public void SetMainImage(Sprite image) => mainImage.sprite = image;
+        public void SetBackgroundImage(Sprite image) => backgroundImage.sprite = image;
+        public float Height() => transform.rect.height;
 
-        public float Width() => myTransform.rect.width;
+        public float Width() => transform.rect.width;
         // public TypeCurrency GetTypePrice() => myTypeCurrency;
         // public int GetPrice() => myPrice;
-        // public string GetName() => myName.text;
-        // public Image GetMainImage() => myMainImage;
-        // public Image GetBackgroundImage() => myBackgroundImage;
+        // public string GetName() => name.text;
+        // public Image GetMainImage() => mainImage;
+        // public Image GetBackgroundImage() => backgroundImage;
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Resources.Scripts.AllData;
-using Resources.Scripts.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

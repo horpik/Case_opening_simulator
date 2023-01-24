@@ -24,7 +24,6 @@ namespace Resources.Scripts.Achievement
                 elementMeta.SetAchievement(achievement);
                 elementMeta.SetMainImage(achievement.GetMainImage());
                 elementMeta.SetStateImage(achievement.GetStateImage());
-                elementMeta.SetRewardImage(achievement.GetRewardImage());
                 elementMeta.SetName(achievement.GetName());
                 elementMeta.SetDescription(achievement.GetDescription());
                 elementMeta.SetRare(achievement.GetRare());

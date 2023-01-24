@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Resources.Scripts.AllData;
-using Resources.Scripts.Enums;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Resources.Scripts.Items
@@ -15,18 +15,15 @@ namespace Resources.Scripts.Items
         [Header("Prefabs")] [SerializeField] private GameObject itemPrefab;
 
         [Header("Texts")] [SerializeField] private TextMeshProUGUI countItems;
-        [SerializeField] private TextMeshProUGUI countSellGem;
-        [SerializeField] private TextMeshProUGUI countSellMoney;
+        [SerializeField] private TextMeshProUGUI sellMoneyCount;
         private List<IItem> _listElements;
 
-        private static int sumSelectedItemsGem;
-        private static int sumSelectedItemsMoney;
+        private static int sumSelectedItems;
 
         private void Start()
         {
             _listElements = new List<IItem>();
-            sumSelectedItemsGem = 0;
-            sumSelectedItemsMoney = 0;
+            sumSelectedItems = 0;
         }
 
         public void FieldGeneration()
@@ -35,8 +32,7 @@ namespace Resources.Scripts.Items
             listViewItems.SetDefaultSizeContent();
             _listElements = User.GetItems();
             countItems.text = "Предметов: " + _listElements.Count;
-            countSellGem.text = sumSelectedItemsGem.ToString();
-            countSellMoney.text = sumSelectedItemsMoney.ToString();
+            sellMoneyCount.text = sumSelectedItems.ToString();
             foreach (var item in _listElements)
             {
                 GameObject element = listViewItems.Add(itemPrefab);
@@ -53,31 +49,17 @@ namespace Resources.Scripts.Items
                     {
                         item.SetState(false);
                         actionButton.image.color = new Color(178f, 184f, 195f, 0.2f);
-                        if (item.GetTypePrice() == TypeCurrency.Gem)
-                        {
-                            sumSelectedItemsGem += item.GetPrice();
-                        }
-                        else
-                        {
-                            sumSelectedItemsMoney += item.GetPrice();
-                        }
+                        sumSelectedItems += item.GetPrice();
                     }
                     else
                     {
                         item.SetState(true);
                         actionButton.image.color = new Color(178f, 184f, 195f, 0f);
-                        if (item.GetTypePrice() == TypeCurrency.Gem)
-                        {
-                            sumSelectedItemsGem -= item.GetPrice();
-                        }
-                        else
-                        {
-                            sumSelectedItemsMoney -= item.GetPrice();
-                        }
+
+                        sumSelectedItems -= item.GetPrice();
                     }
 
-                    countSellGem.text = sumSelectedItemsGem.ToString();
-                    countSellMoney.text = sumSelectedItemsMoney.ToString();
+                    sellMoneyCount.text = sumSelectedItems.ToString();
                 });
             }
         }
@@ -89,8 +71,7 @@ namespace Resources.Scripts.Items
                 item.SetState(true);
             }
 
-            sumSelectedItemsGem = 0;
-            sumSelectedItemsMoney = 0;
+            sumSelectedItems = 0;
         }
 
         private void DeleteItems()
@@ -107,11 +88,9 @@ namespace Resources.Scripts.Items
 
         public void SellItemsButton()
         {
-            User.AddMoney(sumSelectedItemsMoney);
-            User.AddGem(sumSelectedItemsGem);
+            User.AddMoney(sumSelectedItems);
             ManagerEvent.ActivateChangeMoney();
-            sumSelectedItemsGem = 0;
-            sumSelectedItemsMoney = 0;
+            sumSelectedItems = 0;
             FieldGeneration();
         }
     }

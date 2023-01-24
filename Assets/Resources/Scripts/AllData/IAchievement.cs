@@ -1,5 +1,4 @@
-﻿using Resources.Scripts.Enums;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Resources.Scripts.AllData
 {
@@ -16,7 +15,5 @@ namespace Resources.Scripts.AllData
         public Sprite GetMainImage();
         
         public Sprite GetStateImage();
-        public Sprite GetRewardImage();
-        public TypeCurrency GetTypeReward();
     }
 }

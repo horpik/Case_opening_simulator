@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 3380228675097556066}
   - component: {fileID: 3277243068997369244}
   m_Layer: 0
-  m_Name: Item lucky Prefab
+  m_Name: Item lucky prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,8 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3def4cf7731740358219b890ecef7671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTransform: {fileID: 3380228675097556066}
-  myMainImage: {fileID: 5169263908083146992}
-  myBackgroundImage: {fileID: 3071710276827563343}
-  myName: {fileID: 6125430552167898846}
-  myPriceText: {fileID: 0}
+  transform: {fileID: 3380228675097556066}
+  mainImage: {fileID: 5169263908083146992}
+  backgroundImage: {fileID: 3071710276827563343}
+  name: {fileID: 6125430552167898846}

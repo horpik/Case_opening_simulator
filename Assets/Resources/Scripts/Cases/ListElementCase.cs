@@ -1,28 +1,24 @@
 ﻿using Resources.Scripts.AllData;
-using Resources.Scripts.Enums;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Resources.Scripts.Cases
 {
     public class ListElementCase : ListElement
     {
-        [Header("Images")] [SerializeField] private Image myPriceImage;
-        [Header("Button")] [SerializeField] private Button myActionButton;
-        [SerializeField] private TextMeshProUGUI myPriceText;
-        private IItem _myItem;
-        private ICase myCase;
-        public void SetCase(ICase _case) => myCase = _case;
+        [Header("Button")] [SerializeField] private Button actionButton;
+        [SerializeField] private TextMeshProUGUI priceText;
+        private ICase _case;
+        public void SetCase(ICase _case) => this._case = _case;
 
         public void SetPrice(int price)
         {
-            myPriceText.text = price.ToString();
+            priceText.text = price.ToString();
         }
 
-        public ICase GetCase() => myCase;
-        public Button GetActionButton() => this.myActionButton;
-        public void SetPriceImage(Sprite image) => myPriceImage.sprite = image;
-        public Image GetTypePriceImage() => myPriceImage;
+        public ICase GetCase() => _case;
+        public Button GetActionButton() => this.actionButton;
     }
 }

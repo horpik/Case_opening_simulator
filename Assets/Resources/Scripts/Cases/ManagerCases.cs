@@ -30,14 +30,12 @@ namespace Resources.Scripts.Cases
                 elementMeta.SetMainImage(_case.GetMainImage());
                 elementMeta.SetBackgroundImage(_case.GetBackgroundImage());
                 elementMeta.SetPrice(_case.GetPrice());
-                elementMeta.SetPriceImage(_case.GetTypePriceImage());
                 Button actionButton = elementMeta.GetActionButton();
                 actionButton.onClick.AddListener(() =>
                 {
                     managerOpeningCases.ClickOnCase(
                         _case.GetName(),
                         _case.GetPrice(),
-                        _case.GetTypePrice(),
                         _case.GetItems(),
                         _case.GetWeight());
                     managerScreen.ClickOnOpenCase();

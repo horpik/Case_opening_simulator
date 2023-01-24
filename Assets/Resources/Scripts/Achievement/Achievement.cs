@@ -1,55 +1,47 @@
 ﻿using Resources.Scripts.AllData;
-using Resources.Scripts.Enums;
 using UnityEngine;
 
 namespace Resources.Scripts.Achievement
 {
     public class Achievement : IAchievement
     {
-        private string myName;
-        private string myDescription;
-        private string myRare;
+        private string name;
+        private string description;
+        private string rare;
 
         private bool isAwardReceived;
 
-        private Sprite myMainImage;
-        private Sprite myRewardImage;
-        private Sprite myStateImage;
+        private Sprite mainImage;
+        private Sprite stateImage;
 
-        private int myCountReward;
-        private TypeCurrency myTypeReward;
+        private int countReward;
 
-        public Achievement(string name, string description, string rare, Sprite mainImage, Sprite rewardImage,
-            Sprite stateImage, int countReward, TypeCurrency typeCurrency)
+        public Achievement(string name, string description, string rare, Sprite mainImage,
+            Sprite stateImage, int countReward)
         {
-            myName = name;
-            myDescription = description;
-            myRare = rare;
-            myMainImage = mainImage;
-            myRewardImage = rewardImage;
-            myStateImage = stateImage;
-            myCountReward = countReward;
-            myTypeReward = typeCurrency;
+            this.name = name;
+            this.description = description;
+            this.rare = rare;
+            this.mainImage = mainImage;
+            this.stateImage = stateImage;
+            this.countReward = countReward;
         }
 
-        public string GetName() => myName;
+        public string GetName() => name;
 
-        public string GetDescription() => myDescription;
+        public string GetDescription() => description;
 
-        public string GetRare() => myRare;
+        public string GetRare() => rare;
 
         public bool GetState() => isAwardReceived;
 
         public void SetState(bool state) => isAwardReceived = state;
 
-        public int GetCountReward() => myCountReward;
+        public int GetCountReward() => countReward;
 
-        public Sprite GetMainImage() => myMainImage;
+        public Sprite GetMainImage() => mainImage;
 
-        public Sprite GetStateImage() => myStateImage;
+        public Sprite GetStateImage() => stateImage;
 
-        public Sprite GetRewardImage() => myRewardImage;
-
-        public TypeCurrency GetTypeReward() => myTypeReward;
     }
 }

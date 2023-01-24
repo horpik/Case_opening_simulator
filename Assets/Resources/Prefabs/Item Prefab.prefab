@@ -539,13 +539,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44e49ef28ec45b78cb84c0f6d021e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTransform: {fileID: 7743029124389616993}
-  myMainImage: {fileID: 7743029123957205936}
-  myPriceImage: {fileID: 6049116048006345487}
-  myBackgroundImage: {fileID: 8858751814211922035}
-  myName: {fileID: 7743029124871075262}
-  myPriceText: {fileID: 7743029122884457472}
+  transform: {fileID: 7743029124389616993}
+  mainImage: {fileID: 7743029123957205936}
+  backgroundImage: {fileID: 8858751814211922035}
+  name: {fileID: 7743029124871075262}
   myActionButton: {fileID: 7743029122935350867}
+  myPriceText: {fileID: 7743029122884457472}
 --- !u!1 &7743029124871075260
 GameObject:
   m_ObjectHideFlags: 0

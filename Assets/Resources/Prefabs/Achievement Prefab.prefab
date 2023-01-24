@@ -134,19 +134,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efad3b97fd7846a68ae2a1b3e784bd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTransform: {fileID: 5464509864582240296}
-  myMainImage: {fileID: 5464509864512584337}
-  myBackgroundImage: {fileID: 0}
-  myName: {fileID: 5464509866285769406}
-  myPriceText: {fileID: 0}
-  myTransform: {fileID: 5464509864582240296}
-  myMainImage: {fileID: 5464509864512584337}
-  myStateImage: {fileID: 5464509866139229252}
-  Reward: {fileID: 5464509865733493785}
-  myName: {fileID: 5464509866285769406}
-  myDescriptionText: {fileID: 5464509866337797329}
-  myRareText: {fileID: 5464509865075129023}
-  myCountRewardText: {fileID: 5464509866615569549}
+  transform: {fileID: 5464509864582240296}
+  mainImage: {fileID: 5464509864512584337}
+  backgroundImage: {fileID: 8845715917041871438}
+  name: {fileID: 5464509866285769406}
+  stateImage: {fileID: 5464509866139229252}
+  rewardImage: {fileID: 0}
+  descriptionText: {fileID: 5464509866337797329}
+  rareText: {fileID: 5464509865075129023}
+  countRewardText: {fileID: 5464509866615569549}
 --- !u!1 &5464509864855228027
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c1d1fff36e669de48a4afc3cbbceac62, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6dc6a52dadd74a4ba5286365eb02056, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

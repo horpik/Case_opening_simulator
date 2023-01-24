@@ -1,5 +1,4 @@
-﻿using Resources.Scripts.Enums;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Resources.Scripts.AllData
 {
@@ -12,7 +11,5 @@ namespace Resources.Scripts.AllData
         public void SetState(bool state);
         public bool GetState();
         public int GetWeight();
-        public TypeCurrency GetTypePrice();
-        public Sprite GetTypePriceImage();
     }
 }

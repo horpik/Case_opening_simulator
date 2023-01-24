@@ -55,13 +55,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac419ca05fe4eab9d4d98375cd0e68e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTransform: {fileID: 2289910983634031709}
-  myMainImage: {fileID: 2289910983809798412}
-  myPriceImage: {fileID: 1004813819447164632}
-  myBackgroundImage: {fileID: 5422333587130745834}
-  myName: {fileID: 2289910984664197616}
-  myPriceText: {fileID: 4594238729897517126}
-  myActionButton: {fileID: 2289910983971469644}
+  transform: {fileID: 2289910983634031709}
+  mainImage: {fileID: 2289910983809798412}
+  backgroundImage: {fileID: 5422333587130745834}
+  name: {fileID: 2289910984664197616}
+  actionButton: {fileID: 2289910983971469644}
+  priceText: {fileID: 4594238729897517126}
 --- !u!1 &2289910983809798414
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +270,7 @@ GameObject:
   - component: {fileID: 2289910984664197617}
   - component: {fileID: 2289910984664197616}
   m_Layer: 0
-  m_Name: Title {Text}
+  m_Name: Name {Text}
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
