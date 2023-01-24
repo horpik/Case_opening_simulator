@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.mrpart.yandexsdkplugin": {
+      "version": "https://github.com/MrPart256/YandexSDKWebGLUnityPlugin.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "782644f92be649b63853faee56e8a7504cf3601e"
+    },
     "com.unity.collab-proxy": {
       "version": "1.17.7",
       "depth": 0,
@@ -17,7 +24,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.16",
+      "version": "3.0.18",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -32,13 +39,6 @@
       "dependencies": {
         "com.unity.test-framework": "1.1.9"
       },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.ide.vscode": {
-      "version": "1.2.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.nuget.newtonsoft-json": {
