@@ -1,4 +1,4 @@
-# CasesForYandex
+# Case Opening Simulator
 
 Создание игры для платформы webGL, используя C# и unity.
 
